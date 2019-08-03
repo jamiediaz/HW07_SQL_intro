@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<tablespace name="HW7" directory="'HW7'">
+	<role name="postgres"/>
+</tablespace>
+
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="DEPARTMENTS">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="180" y="80"/>
+	<column name="DEPT_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="DEPT_NAME" not-null="true">
+		<type name="char" length="30"/>
+	</column>
+	<constraint name="DEPT_NO" type="pk-constr" table="public.&quot;DEPARTMENTS&quot;">
+		<columns names="DEPT_NO" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="DEPT_EMP">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="180" y="320"/>
+	<column name="EMP_NO">
+		<type name="char" length="10"/>
+	</column>
+	<column name="DEPT_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="FROM_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="TO_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+</table>
+
+<table name="EMPLOYEES">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="720" y="360"/>
+	<column name="EMP_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="BIRTH_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="FIRST_NAME">
+		<type name="char" length="30"/>
+	</column>
+	<column name="LAST_NAME">
+		<type name="char" length="30"/>
+	</column>
+	<column name="GENDER" not-null="true">
+		<type name="char" length="1"/>
+	</column>
+	<column name="HIRE_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<constraint name="EMP_NO" type="pk-constr" table="public.&quot;EMPLOYEES&quot;">
+		<columns names="EMP_NO" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="SALARIES">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1240" y="120"/>
+	<column name="EMP_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="SALARY" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="FROM_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="TO_DATE">
+		<type name="char" length="10"/>
+	</column>
+</table>
+
+<table name="TITLES">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1280" y="380"/>
+	<column name="EMP_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="TITLE">
+		<type name="char" length="30"/>
+	</column>
+	<column name="FROM_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="TO_DATE">
+		<type name="char" length="10"/>
+	</column>
+</table>
+
+<table name="DEPT_MANAGER">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="720" y="60"/>
+	<column name="DEPT_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="EMP_NO" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="FROM_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+	<column name="TO_DATE" not-null="true">
+		<type name="char" length="10"/>
+	</column>
+</table>
+
+<constraint name="DEPT_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;DEPARTMENTS&quot;" table="public.&quot;DEPT_EMP&quot;">
+	<columns names="DEPT_NO" ref-type="src-columns"/>
+	<columns names="DEPT_NO" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="EMP_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;DEPT_EMP&quot;">
+	<columns names="EMP_NO" ref-type="src-columns"/>
+	<columns names="EMP_NO" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="EMP_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;SALARIES&quot;">
+	<columns names="EMP_NO" ref-type="src-columns"/>
+	<columns names="EMP_NO" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="EMP_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;TITLES&quot;">
+	<columns names="EMP_NO" ref-type="src-columns"/>
+	<columns names="EMP_NO" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="DEPT_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;DEPARTMENTS&quot;" table="public.&quot;DEPT_MANAGER&quot;">
+	<columns names="DEPT_NO" ref-type="src-columns"/>
+	<columns names="DEPT_NO" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="EMP_NO" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;DEPT_MANAGER&quot;">
+	<columns names="EMP_NO" ref-type="src-columns"/>
+	<columns names="EMP_NO" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="&quot;rel_DEPT_EMP_DEPARTMENTS&quot;" type="relfk"
+	 src-table="public.&quot;DEPT_EMP&quot;"
+	 dst-table="public.&quot;DEPARTMENTS&quot;" reference-fk="DEPT_NO"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_DEPT_EMP_EMPLOYEES&quot;" type="relfk"
+	 src-table="public.&quot;DEPT_EMP&quot;"
+	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_SALARIES_EMPLOYEES&quot;" type="relfk"
+	 src-table="public.&quot;SALARIES&quot;"
+	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_TITLES_EMPLOYEES&quot;" type="relfk"
+	 src-table="public.&quot;TITLES&quot;"
+	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_DEPT_MANAGER_DEPARTMENTS&quot;" type="relfk"
+	 src-table="public.&quot;DEPT_MANAGER&quot;"
+	 dst-table="public.&quot;DEPARTMENTS&quot;" reference-fk="DEPT_NO"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_DEPT_MANAGER_EMPLOYEES&quot;" type="relfk"
+	 src-table="public.&quot;DEPT_MANAGER&quot;"
+	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
