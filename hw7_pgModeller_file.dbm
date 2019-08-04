@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="0.9"
 	 default-schema="public" default-owner="postgres">
 <tablespace name="HW7" directory="'HW7'">
 	<role name="postgres"/>
@@ -12,13 +12,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
 
-<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+<schema name="public" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
 <table name="DEPARTMENTS">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="180" y="80"/>
+	<position x="80" y="60"/>
 	<column name="DEPT_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -33,7 +33,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="DEPT_EMP">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="180" y="320"/>
+	<position x="560" y="40"/>
 	<column name="EMP_NO">
 		<type name="char" length="10"/>
 	</column>
@@ -51,7 +51,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="EMPLOYEES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="720" y="360"/>
+	<position x="580" y="260"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -78,7 +78,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="SALARIES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1240" y="120"/>
+	<position x="60" y="400"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -96,7 +96,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="TITLES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1280" y="380"/>
+	<position x="580" y="500"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -114,7 +114,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="DEPT_MANAGER">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="720" y="60"/>
+	<position x="60" y="240"/>
 	<column name="DEPT_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -165,34 +165,61 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="EMP_NO" ref-type="dst-columns"/>
 </constraint>
 
-<relationship name="&quot;rel_DEPT_EMP_DEPARTMENTS&quot;" type="relfk"
+<relationship name="DEPARTMENTS - DEPT_EMP" type="relfk"
 	 src-table="public.&quot;DEPT_EMP&quot;"
 	 dst-table="public.&quot;DEPARTMENTS&quot;" reference-fk="DEPT_NO"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
 
-<relationship name="&quot;rel_DEPT_EMP_EMPLOYEES&quot;" type="relfk"
+<relationship name="EMPLOYEES - DEPT_EMP" type="relfk"
 	 src-table="public.&quot;DEPT_EMP&quot;"
 	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-3.83391" y="-28.9134"/>
+	</label>
+</relationship>
 
-<relationship name="&quot;rel_SALARIES_EMPLOYEES&quot;" type="relfk"
-	 src-table="public.&quot;SALARIES&quot;"
-	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
-	 src-required="false" dst-required="false"/>
-
-<relationship name="&quot;rel_TITLES_EMPLOYEES&quot;" type="relfk"
+<relationship name="EMPLOYEES - TITLES" type="relfk"
 	 src-table="public.&quot;TITLES&quot;"
 	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="src-label">
+		<position x="-73.9805" y="1.85"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="14.8581" y="-17.5266"/>
+	</label>
+</relationship>
 
-<relationship name="&quot;rel_DEPT_MANAGER_DEPARTMENTS&quot;" type="relfk"
+<relationship name="DEPARTMENTS - DEPT_MANAGER" type="relfk"
 	 src-table="public.&quot;DEPT_MANAGER&quot;"
 	 dst-table="public.&quot;DEPARTMENTS&quot;" reference-fk="DEPT_NO"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="18.2602" y="-19.5266"/>
+	</label>
+</relationship>
 
-<relationship name="&quot;rel_DEPT_MANAGER_EMPLOYEES&quot;" type="relfk"
+<relationship name="DEPT_MANAGER - EMPLOYEES" type="relfk"
 	 src-table="public.&quot;DEPT_MANAGER&quot;"
 	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
-	 src-required="false" dst-required="false"/>
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="1.66609" y="-48.6027"/>
+	</label>
+</relationship>
+
+<relationship name="EMPLOYEES - SALARIES" type="relfk"
+	 src-table="public.&quot;SALARIES&quot;"
+	 dst-table="public.&quot;EMPLOYEES&quot;" reference-fk="EMP_NO"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-16.3339" y="-9.66505"/>
+	</label>
+</relationship>
 
 </dbmodel>
