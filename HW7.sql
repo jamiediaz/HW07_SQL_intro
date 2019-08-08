@@ -1,3 +1,7 @@
+-- Drop tables if they exist.  
+-- create the tables with PKs first. 
+-- Do DEPT_MANAGER last because it has FKs
+
 DROP TABLE IF EXISTS DEPT_EMP cascade;
 DROP TABLE IF EXISTS DEPARTMENTS cascade;
 DROP TABLE IF EXISTS EMPLOYEES cascade;
@@ -6,6 +10,7 @@ DROP TABLE IF EXISTS TITLES cascade;
 DROP TABLE IF EXISTS DEPT_MANAGER cascade;
 
 
+-- Create the department table with the PK for dept_no
 
 CREATE TABLE DEPARTMENTS(
 	DEPT_NO char(10) NOT NULL,
@@ -13,6 +18,8 @@ CREATE TABLE DEPARTMENTS(
 	PRIMARY KEY (DEPT_NO)
 );
 
+
+-- create employees table with emp_no as the PK
 
 CREATE TABLE EMPLOYEES(
 	EMP_NO char(10) NOT NULL,
@@ -27,7 +34,7 @@ CREATE TABLE EMPLOYEES(
 
 
 
-
+-- create the salaries table with an FK that points to employees
 CREATE TABLE SALARIES(
 	EMP_NO char(10) NOT NULL,
 	SALARY char(10) NOT NULL,
@@ -38,8 +45,7 @@ CREATE TABLE SALARIES(
 );
 
 
-
-
+-- create titles with an FK also to employees
 
 CREATE TABLE TITLES(
 	EMP_NO char(10) NOT NULL,
@@ -51,6 +57,7 @@ CREATE TABLE TITLES(
 );
 
 
+-- create the dept_manager table. FKs to employees and deparments. 
 
 CREATE TABLE DEPT_MANAGER(
 	DEPT_NO char(10) NOT NULL,
