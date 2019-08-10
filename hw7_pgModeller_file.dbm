@@ -33,7 +33,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="DEPT_EMP">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="560" y="40"/>
+	<position x="660" y="40"/>
 	<column name="EMP_NO">
 		<type name="char" length="10"/>
 	</column>
@@ -51,7 +51,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="EMPLOYEES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="580" y="260"/>
+	<position x="700" y="260"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -78,7 +78,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="SALARIES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="400"/>
+	<position x="60" y="540"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -96,7 +96,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="TITLES">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="580" y="500"/>
+	<position x="660" y="620"/>
 	<column name="EMP_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -114,7 +114,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="DEPT_MANAGER">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="240"/>
+	<position x="60" y="300"/>
 	<column name="DEPT_NO" not-null="true">
 		<type name="char" length="10"/>
 	</column>
@@ -154,13 +154,13 @@ CAUTION: Do not modify this file unless you know what you are doing.
 </constraint>
 
 <constraint name="DEPT_NO" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;DEPARTMENTS&quot;" table="public.&quot;DEPT_MANAGER&quot;">
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.&quot;DEPARTMENTS&quot;" table="public.&quot;DEPT_MANAGER&quot;">
 	<columns names="DEPT_NO" ref-type="src-columns"/>
 	<columns names="DEPT_NO" ref-type="dst-columns"/>
 </constraint>
 
 <constraint name="EMP_NO" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;DEPT_MANAGER&quot;">
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.&quot;EMPLOYEES&quot;" table="public.&quot;DEPT_MANAGER&quot;">
 	<columns names="EMP_NO" ref-type="src-columns"/>
 	<columns names="EMP_NO" ref-type="dst-columns"/>
 </constraint>
@@ -191,7 +191,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<position x="-73.9805" y="1.85"/>
 	</label>
 	<label ref-type="name-label">
-		<position x="14.8581" y="-17.5266"/>
+		<position x="-6.99639" y="-41.7766"/>
 	</label>
 </relationship>
 
